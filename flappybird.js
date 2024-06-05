@@ -3,7 +3,7 @@ let boardWidth = 360;
 let boardHeight = 640;
 let context;
 
-//bird
+// Bird
 let birdWidth = 60;
 let birdHeight = 70;
 let birdX = boardWidth / 8;
@@ -17,7 +17,7 @@ let bird = {
     height: birdHeight
 }
 
-//pipes
+// Pipes
 let pipeArray = [];
 let pipeWidth = 64;
 let pipeHeight = 512;
@@ -27,13 +27,13 @@ let pipeY = 0;
 let topPipeImg;
 let bottomPipeImg;
 
-//cake
+// Cake
 let cakeImg;
 let cake = null;
 let cakeWidth = 50;
 let cakeHeight = 50;
 
-//physics
+// Physics
 let velocityX = -2;
 let velocityY = 0;
 let gravity = 0.3;
@@ -42,7 +42,10 @@ let gameOver = false;
 let score = 0;
 let pipesPassed = 0;
 
-// sound
+// Lives
+let lives = 3;
+
+// Sound
 let eatSound;
 
 window.onload = function () {
@@ -100,6 +103,7 @@ function startGame() {
     pipesPassed = 0;
     cake = null;
     gameOver = false;
+    lives = 4; // Reset lives
 }
 
 function update() {
@@ -115,7 +119,7 @@ function update() {
     context.drawImage(birdImg, bird.x, bird.y, bird.width, bird.height);
 
     if (bird.y > board.height) {
-        gameOver = true;
+        handleCollision();
     }
 
     // Pipes
@@ -130,7 +134,7 @@ function update() {
             pipesPassed++;
 
             // Show cake after passing 5 pipes
-            if (pipesPassed%3 === 0) {
+            if (pipesPassed % 3 === 0) {
                 let topPipe = pipeArray[pipeArray.length - 2];
                 let bottomPipe = pipeArray[pipeArray.length - 1];
                 let cakeY = (topPipe.y + topPipe.height + bottomPipe.y) / 2 - cakeHeight / 2;
@@ -144,7 +148,7 @@ function update() {
         }
 
         if (detectCollision(bird, pipe)) {
-            gameOver = true;
+            handleCollision();
         }
     }
 
@@ -175,8 +179,11 @@ function update() {
     context.font = "45px sans-serif";
     context.fillText(score, 5, 45);
 
+    // Lives
+    context.fillText("Lives: " + lives, 5, 90);
+
     if (gameOver) {
-        context.fillText("GAME OVER", 5, 90);
+        context.fillText("GAME OVER", 5, 135);
     }
 }
 
@@ -249,16 +256,27 @@ function resetGame() {
     // Reset game variables
     bird.y = birdY;
     pipeArray = [];
-    score = 0;
+    score =  0;
     pipesPassed = 0;
-   
     cake = null;
     gameOver = false;
+    lives = 3; // Reset lives
+}
+
+function handleCollision() {
+    lives--;
+    if (lives <= 0) {
+        gameOver = true;
+    } else {
+        bird.y = birdY; // Reset bird position
+        velocityY = 0; // Reset bird velocity
     }
-    
-    function detectCollision(a, b) {
+}
+
+function detectCollision(a, b) {
     return a.x < b.x + b.width &&
-    a.x + a.width > b.x &&
-    a.y < b.y + b.height &&
-    a.y + a.height > b.y;
-    }
+        a.x + a.width > b.x &&
+        a.y < b.y + b.height &&
+        a.y + a.height > b.y;
+}
+
