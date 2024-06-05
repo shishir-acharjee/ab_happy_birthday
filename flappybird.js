@@ -47,7 +47,7 @@ let lives = 3;
 
 // Sound
 let eatSound;
-
+let collisionSound;
 window.onload = function () {
     const startButton = document.getElementById('start-button');
     const startScreen = document.getElementById('start-screen');
@@ -91,6 +91,7 @@ function startGame() {
 
     // Load sound
     eatSound = new Audio("./eat.mp3");
+    collisionSound = new Audio("./collisionSound.mp3");
 
     requestAnimationFrame(update);
     setInterval(placePipes, 1500); // Place pipes every 1.5 seconds
@@ -260,7 +261,7 @@ function resetGame() {
     pipesPassed = 0;
     cake = null;
     gameOver = false;
-    lives = 3; // Reset lives
+    lives = 4; // Reset lives
 }
 
 function handleCollision() {
@@ -271,6 +272,7 @@ function handleCollision() {
         bird.y = birdY; // Reset bird position
         velocityY = 0; // Reset bird velocity
     }
+    collisionSound.play();
 }
 
 function detectCollision(a, b) {
@@ -279,4 +281,3 @@ function detectCollision(a, b) {
         a.y < b.y + b.height &&
         a.y + a.height > b.y;
 }
-
