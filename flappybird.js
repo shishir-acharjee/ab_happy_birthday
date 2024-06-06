@@ -48,7 +48,14 @@ let lives = 3;
 // Sound
 let eatSound;
 let collisionSound;
-let tap1;
+
+let introText = "fairy ahona is flying";
+let introTextDisplayed = "";
+let introIndex = 0;
+let introDuration = 6000; // Duration in milliseconds
+let introStartTime = null;
+let introInterval;
+
 window.onload = function () {
     const startButton = document.getElementById('start-button');
     const startScreen = document.getElementById('start-screen');
@@ -93,7 +100,13 @@ function startGame() {
     // Load sound
     eatSound = new Audio("./eat.mp3");
     collisionSound = new Audio("./collisionSound.mp3");
-    tap1=new Audio("./tap.mp3");
+
+    // Initialize intro text
+    introTextDisplayed = "";
+    introIndex = 0;
+    introStartTime = Date.now();
+    introInterval = setInterval(displayIntroText, introDuration / introText.length);
+
     requestAnimationFrame(update);
     setInterval(placePipes, 1500); // Place pipes every 1.5 seconds
     document.addEventListener("keydown", moveBird);
@@ -176,16 +189,25 @@ function update() {
         }
     }
 
+    // Intro Text
+    if (Date.now() - introStartTime < introDuration) {
+        context.fillStyle = "white";
+        context.font = "30px sans-serif";
+        context.fillText(introTextDisplayed, 5, 30);
+    } else {
+        clearInterval(introInterval);
+    }
+
     // Score
     context.fillStyle = "white";
     context.font = "45px sans-serif";
-    context.fillText(score, 5, 45);
+    context.fillText(score, 5, 75);
 
     // Lives
-    context.fillText("Lives: " + lives, 5, 90);
+    context.fillText("Lives: " + lives, 5, 120);
 
     if (gameOver) {
-        context.fillText("GAME OVER", 5, 135);
+        context.fillText("GAME OVER", 5, 165);
     }
 }
 
@@ -223,7 +245,6 @@ function moveBird(e) {
     if (e.code == "Space" || e.code == "ArrowUp" || e.code == "KeyX") {
         // Jump
         jump();
-        tap1.play();
     }
 }
 
@@ -232,7 +253,7 @@ function handleTouchStart(event) {
     event.preventDefault();
     
     // Jump when touch starts
-    jump(); tap1.play();
+    jump();
 }
 
 function handleTouchEnd(event) {
@@ -282,4 +303,13 @@ function detectCollision(a, b) {
         a.x + a.width > b.x &&
         a.y < b.y + b.height &&
         a.y + a.height > b.y;
+}
+
+function displayIntroText() {
+    if (introIndex < introText.length) {
+        introTextDisplayed += introText[introIndex];
+        introIndex++;
+    } else {
+        clearInterval(introInterval);
+    }
 }
