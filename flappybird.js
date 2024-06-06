@@ -48,6 +48,7 @@ let lives = 3;
 // Sound
 let eatSound;
 let collisionSound;
+let tap1;
 window.onload = function () {
     const startButton = document.getElementById('start-button');
     const startScreen = document.getElementById('start-screen');
@@ -92,7 +93,7 @@ function startGame() {
     // Load sound
     eatSound = new Audio("./eat.mp3");
     collisionSound = new Audio("./collisionSound.mp3");
-
+    tap1=new Audio("./tap.mp3");
     requestAnimationFrame(update);
     setInterval(placePipes, 1500); // Place pipes every 1.5 seconds
     document.addEventListener("keydown", moveBird);
@@ -134,7 +135,7 @@ function update() {
             pipe.passed = true;
             pipesPassed++;
 
-            // Show cake after passing 5 pipes
+            // Show cake after passing every 3 pipes
             if (pipesPassed % 3 === 0) {
                 let topPipe = pipeArray[pipeArray.length - 2];
                 let bottomPipe = pipeArray[pipeArray.length - 1];
@@ -222,6 +223,7 @@ function moveBird(e) {
     if (e.code == "Space" || e.code == "ArrowUp" || e.code == "KeyX") {
         // Jump
         jump();
+        tap1.play();
     }
 }
 
@@ -230,7 +232,7 @@ function handleTouchStart(event) {
     event.preventDefault();
     
     // Jump when touch starts
-    jump();
+    jump(); tap1.play();
 }
 
 function handleTouchEnd(event) {
@@ -257,7 +259,7 @@ function resetGame() {
     // Reset game variables
     bird.y = birdY;
     pipeArray = [];
-    score =  0;
+    score = 0;
     pipesPassed = 0;
     cake = null;
     gameOver = false;
