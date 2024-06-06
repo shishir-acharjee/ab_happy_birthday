@@ -27,9 +27,8 @@
             background-color: #45a049; /* Darker Green */
         }
         .song-button.active {
-    background-color: #FF5733; /* Orange */
-}
-
+            background-color: #FF5733; /* Orange */
+        }
     </style>
 </head>
 <body>
@@ -41,12 +40,9 @@
             <button id="song2-button" class="song-button" onclick="selectSong(1)">Song 2</button>
             <button id="song3-button" class="song-button" onclick="selectSong(2)">Song 3</button>
         </div>
-        
         <button id="music-button">Play Music</button>
     </div>
     <canvas id="board"></canvas>
-    <audio id="bg-music" loop>
-        <!-- The source will be set dynamically in JavaScript -->
-    </audio>
+    <audio id="bg-music" loop></audio>
 </body>
 </html>
