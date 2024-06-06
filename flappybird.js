@@ -1,4 +1,46 @@
-//music part
+// Define an array of background images
+const backgroundImages = [
+    'url("./flappybirdbg.png")',
+    'url("./flappybirdbg2.png")',
+    'url("./flappybirdbg3.png")'
+];
+
+// Initialize restart count from localStorage
+if (!localStorage.getItem('restartCount')) {
+    localStorage.setItem('restartCount', 0);
+}
+
+let restartCount = parseInt(localStorage.getItem('restartCount'));
+
+// Function to update the background image based on the restart count
+function updateBackgroundImage() {
+    const imageIndex = Math.floor(restartCount / 3) % backgroundImages.length;
+    document.getElementById('board').style.backgroundImage = backgroundImages[imageIndex];
+}
+
+// Function to reset the game
+function resetGame() {
+    // Increment the restart count
+    restartCount++;
+    localStorage.setItem('restartCount', restartCount);
+
+    // Update the background image
+    updateBackgroundImage();
+
+    // Reset game variables
+    bird.y = birdY;
+    pipeArray = [];
+    score = 0;
+    pipesPassed = 0;
+    cake = null;
+    gameOver = false;
+    lives = 4; // Reset lives
+
+    // Reset bird position and velocity
+    velocityY = 0;
+}
+
+// Music part
 let bgMusic = document.getElementById('bg-music');
 let musicButton = document.getElementById('music-button');
 let isMusicPlaying = false;
@@ -60,12 +102,7 @@ function updateActiveButton(index) {
     activeButton.classList.add('active');
 }
 
-
-
-// Call switchSong() when you want to switch to the next song
-
-
-//start
+// Game part
 let board;
 let boardWidth = 360;
 let boardHeight = 640;
@@ -125,6 +162,8 @@ let introStartTime = null;
 let introInterval;
 
 window.onload = function () {
+    updateBackgroundImage();
+
     const startButton = document.getElementById('start-button');
     const startScreen = document.getElementById('start-screen');
     const canvas = document.getElementById('board');
@@ -168,7 +207,8 @@ function startGame() {
     // Load sound
     eatSound = new Audio("./eat.mp3");
     collisionSound = new Audio("./collisionSound.mp3");
-    tap1=new Audio("./tap.mp3");
+    tap1 = new Audio("./tap.mp3");
+
     // Initialize intro text
     introTextDisplayed = "";
     introIndex = 0;
@@ -180,13 +220,7 @@ function startGame() {
     document.addEventListener("keydown", moveBird);
 
     // Reset game variables
-    bird.y = birdY;
-    pipeArray = [];
-    score = 0;
-    pipesPassed = 0;
-    cake = null;
-    gameOver = false;
-    lives = 4; // Reset lives
+    resetGame();
 }
 
 function update() {
@@ -312,7 +346,8 @@ function placePipes() {
 function moveBird(e) {
     if (e.code == "Space" || e.code == "ArrowUp" || e.code == "KeyX") {
         // Jump
-        jump(); tap1.play();
+        jump(); 
+        tap1.play();
     }
 }
 
@@ -321,7 +356,8 @@ function handleTouchStart(event) {
     event.preventDefault();
     
     // Jump when touch starts
-    jump(); tap1.play();
+    jump();
+    tap1.play();
 }
 
 function handleTouchEnd(event) {
@@ -342,17 +378,6 @@ function jump() {
     if (gameOver) {
         resetGame();
     }
-}
-
-function resetGame() {
-    // Reset game variables
-    bird.y = birdY;
-    pipeArray = [];
-    score = 0;
-    pipesPassed = 0;
-    cake = null;
-    gameOver = false;
-    lives = 4; // Reset lives
 }
 
 function handleCollision() {
