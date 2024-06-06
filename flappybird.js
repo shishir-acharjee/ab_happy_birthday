@@ -2,7 +2,9 @@
 const backgroundImages = [
     'url("./flappybirdbg.png")',
     'url("./flappybirdbg2.png")',
-    'url("./flappybirdbg3.png")'
+    'url("./flappybirdbg3.png")',
+    'url("./flappybirdbg4.png")',
+    'url("./flappybirdbg5.png")'
 ];
 
 // Initialize restart count from localStorage
