@@ -48,7 +48,7 @@ let lives = 3;
 // Sound
 let eatSound;
 let collisionSound;
-
+let tap1;
 let introText = "fairy ahona is flying";
 let introTextDisplayed = "";
 let introIndex = 0;
@@ -100,7 +100,7 @@ function startGame() {
     // Load sound
     eatSound = new Audio("./eat.mp3");
     collisionSound = new Audio("./collisionSound.mp3");
-
+    tap1=new Audio("./tap.mp3");
     // Initialize intro text
     introTextDisplayed = "";
     introIndex = 0;
@@ -244,7 +244,7 @@ function placePipes() {
 function moveBird(e) {
     if (e.code == "Space" || e.code == "ArrowUp" || e.code == "KeyX") {
         // Jump
-        jump();
+        jump(); tap1.play();
     }
 }
 
@@ -253,7 +253,7 @@ function handleTouchStart(event) {
     event.preventDefault();
     
     // Jump when touch starts
-    jump();
+    jump(); tap1.play();
 }
 
 function handleTouchEnd(event) {
