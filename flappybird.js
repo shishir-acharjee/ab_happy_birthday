@@ -1,3 +1,71 @@
+//music part
+let bgMusic = document.getElementById('bg-music');
+let musicButton = document.getElementById('music-button');
+let isMusicPlaying = false;
+let currentSongIndex = 0; // Initialize the current song index
+
+// Define an array of song sources
+let songs = [
+    "background-music.mp3",
+    "background-music2.mp3",
+    "background-music3.mp3"
+];
+
+musicButton.addEventListener('click', function() {
+    if (!isMusicPlaying) {
+        playMusic();
+    } else {
+        pauseMusic();
+    }
+});
+
+function playMusic() {
+    bgMusic.src = songs[currentSongIndex];
+    bgMusic.play();
+    isMusicPlaying = true;
+    musicButton.textContent = 'Pause Music';
+}
+
+function pauseMusic() {
+    bgMusic.pause();
+    isMusicPlaying = false;
+    musicButton.textContent = 'Play Music';
+}
+
+function switchSong() {
+    currentSongIndex = (currentSongIndex + 1) % songs.length; // Update the current song index
+    if (isMusicPlaying) {
+        playMusic(); // Play the new song if music was playing
+    }
+}
+
+// Function to handle song selection
+function selectSong(index) {
+    currentSongIndex = index;
+    if (isMusicPlaying) {
+        playMusic();
+    }
+    updateActiveButton(index);
+}
+
+function updateActiveButton(index) {
+    // Remove 'active' class from all song buttons
+    let buttons = document.querySelectorAll('.song-button');
+    buttons.forEach(button => {
+        button.classList.remove('active');
+    });
+
+    // Add 'active' class to the selected song button
+    let activeButton = document.getElementById(`song${index + 1}-button`);
+    activeButton.classList.add('active');
+}
+
+
+
+// Call switchSong() when you want to switch to the next song
+
+
+//start
 let board;
 let boardWidth = 360;
 let boardHeight = 640;
