@@ -1,17 +1,52 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Flappy Bird</title>
-        <link rel="stylesheet" href="flappybird.css">
-        <script defer src="flappybird.js"></script>
-    </head>
-    <body>
-        <div id="start-screen">
-            <h1>Ahona's Birthday Game</h1>
-            <button id="start-button">Start Game</button>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flappy Bird</title>
+    <link rel="stylesheet" href="flappybird.css">
+    <script defer src="flappybird.js"></script>
+    <style>
+        #music-options {
+            margin-top: 20px;
+        }
+        .song-button {
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: #4CAF50; /* Green */
+            border: none;
+            color: white;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            margin-right: 10px;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+        .song-button:hover {
+            background-color: #45a049; /* Darker Green */
+        }
+        .song-button.active {
+    background-color: #FF5733; /* Orange */
+}
+
+    </style>
+</head>
+<body>
+    <div id="start-screen">
+        <h1>Birthday Game for Ahona</h1>
+        <button id="start-button">Start Game</button>
+        <div id="music-options">
+            <button id="song1-button" class="song-button" onclick="selectSong(0)">Song 1</button>
+            <button id="song2-button" class="song-button" onclick="selectSong(1)">Song 2</button>
+            <button id="song3-button" class="song-button" onclick="selectSong(2)">Song 3</button>
         </div>
-        <canvas id="board"></canvas>
-    </body>
+        
+        <button id="music-button">Play Music</button>
+    </div>
+    <canvas id="board"></canvas>
+    <audio id="bg-music" loop>
+        <!-- The source will be set dynamically in JavaScript -->
+    </audio>
+</body>
 </html>
