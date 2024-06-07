@@ -35,8 +35,11 @@ function resetGame() {
     score = 0;
     pipesPassed = 0;
     cake = null;
+    flower = null; // Reset flower
     gameOver = false;
     lives = 4; // Reset lives
+    isInvincible = false; // Reset invincibility
+    invincibilityEndTime = 0; // Reset invincibility end time
 
     // Reset bird position and velocity
     velocityY = 0;
@@ -140,6 +143,12 @@ let cake = null;
 let cakeWidth = 50;
 let cakeHeight = 50;
 
+// Flower
+let flowerImg;
+let flower = null;
+let flowerWidth = 50;
+let flowerHeight = 50;
+
 // Physics
 let velocityX = -2;
 let velocityY = 0;
@@ -151,6 +160,11 @@ let pipesPassed = 0;
 
 // Lives
 let lives = 3;
+
+// Invincibility
+let isInvincible = false;
+let invincibilityDuration = 6000; // 6 seconds
+let invincibilityEndTime = 0;
 
 // Sound
 let eatSound;
@@ -206,6 +220,9 @@ function startGame() {
     cakeImg = new Image();
     cakeImg.src = "./cake.png";
 
+    flowerImg = new Image();
+    flowerImg.src = "./flower.png";
+
     // Load sound
     eatSound = new Audio("./eat.mp3");
     collisionSound = new Audio("./collisionSound.mp3");
@@ -252,7 +269,7 @@ function update() {
             pipe.passed = true;
             pipesPassed++;
 
-            // Show cake after passing every 3 pipes
+            // Show cake or flower after passing pipes
             if (pipesPassed % 3 === 0) {
                 let topPipe = pipeArray[pipeArray.length - 2];
                 let bottomPipe = pipeArray[pipeArray.length - 1];
@@ -264,9 +281,20 @@ function update() {
                     height: cakeHeight
                 };
             }
+            if (pipesPassed % 15 === 0) {
+                let topPipe = pipeArray[pipeArray.length - 2];
+                let bottomPipe = pipeArray[pipeArray.length - 1];
+                let flowerY = (topPipe.y + topPipe.height + bottomPipe.y) / 2 - flowerHeight / 2;
+                flower = {
+                    x: boardWidth,
+                    y: flowerY,
+                    width: flowerWidth,
+                    height: flowerHeight
+                };
+            }
         }
 
-        if (detectCollision(bird, pipe)) {
+        if (detectCollision(bird, pipe) && !isInvincible) {
             handleCollision();
         }
     }
@@ -290,6 +318,36 @@ function update() {
         // Remove cake if it goes off screen
         if (cake && cake.x < -cakeWidth) {
             cake = null;
+        }
+    }
+
+    // Flower
+    if (flower) {
+        flower.x += velocityX;
+        context.drawImage(flowerImg, flower.x, flower.y, flower.width, flower.height);
+
+        if (detectCollision(bird, flower)) {
+            isInvincible = true;
+            invincibilityEndTime = Date.now() + invincibilityDuration;
+            flower = null; // Remove flower after it is eaten
+            eatSound.play(); // Play the eating sound
+        }
+
+        // Remove flower if it goes off screen
+        if (flower && flower.x < -flowerWidth) {
+            flower = null;
+        }
+    }
+
+    // Handle invincibility
+    if (isInvincible) {
+        if (Date.now() > invincibilityEndTime) {
+            isInvincible = false;
+        } else {
+            // Blink bird during invincibility
+            if (Math.floor(Date.now() / 200) % 2) {
+                context.drawImage(birdImg, bird.x, bird.y, bird.width, bird.height);
+            }
         }
     }
 
