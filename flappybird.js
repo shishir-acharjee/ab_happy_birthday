@@ -344,12 +344,17 @@ function update() {
         if (Date.now() > invincibilityEndTime) {
             isInvincible = false;
         } else {
-            // Blink bird during invincibility
-            if (Math.floor(Date.now() / 200) % 2) {
-                context.drawImage(birdImg, bird.x, bird.y, bird.width, bird.height);
-            }
+            // Draw a glowing effect around the bird
+            context.beginPath();
+            context.arc(bird.x + bird.width / 2, bird.y + bird.height / 2, bird.width / 2 + 5, 0, Math.PI * 2);
+            context.fillStyle = 'rgba(255, 255, 0, 0.5)'; // Yellow semi-transparent color, adjust as needed
+            context.fill();
+            context.closePath();
         }
     }
+    
+    // Draw the bird
+    context.drawImage(birdImg, bird.x, bird.y, bird.width, bird.height);
 
     // Intro Text
     if (Date.now() - introStartTime < introDuration) {
