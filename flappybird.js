@@ -374,7 +374,16 @@ function update() {
     context.fillText("Lives: " + lives, 5, 120);
 
     if (gameOver) {
-        context.fillText("GAME OVER", 5, 165);
+        if (gameOver) {
+            context.fillStyle = "red";
+        context.font = "bold 40px sans-serif";
+        context.fillText("GAME OVER", 50, boardHeight / 2);
+        context.fillStyle = "rgba(255, 0, 0, 0.1)"; // Semi-transparent red color
+        for (let i = 0; i < 5; i++) {
+            let offsetX = Math.random() * 10 - 5;
+            let offsetY = Math.random() * 10 - 5;
+            context.fillText("GAME OVER", 50 + offsetX, boardHeight / 2 + offsetY);
+        }}
     }
 }
 
