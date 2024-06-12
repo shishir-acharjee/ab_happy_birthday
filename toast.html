@@ -1,18 +1,22 @@
 <!DOCTYPE html>
 <html lang="en" >
 <head>
-  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0 charset="UTF-8">
   <title> toaster ghoster</title>
   <link rel="stylesheet" href="./toast.css">
   <style>
     h1{
       text-align: center;
-      margin-left: 30%;
-      margin-bottom: 30%;
+      margin-left: 10%; /* Adjusted margin */
+      margin-bottom: 10%; /* Adjusted margin */
       color: aliceblue;
-      font-size: 50px;
+      font-size: 5vw; /* Responsive font size using vw */
     }
-   
+    @media screen and (max-width: 768px) {
+      h1 {
+        font-size: 8vw;
+      }
+    }
   </style>
 </head>
 <body>
