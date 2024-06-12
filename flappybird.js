@@ -22,6 +22,8 @@ function updateBackgroundImage() {
 
 // Function to reset the game
 function resetGame() {
+     // Hide game over popup if visible
+     document.getElementById('game-over-popup').style.display = 'none';
     // Increment the restart count
     restartCount++;
     localStorage.setItem('restartCount', restartCount);
@@ -438,10 +440,10 @@ function handleTouchEnd(event) {
     // Prevent default touch behavior
     event.preventDefault();
 
-    // Reset game if it's over
+    /* Reset game if it's over
     if (gameOver) {
         resetGame();
-    }
+    }*/
 }
 
 function jump() {
@@ -449,22 +451,31 @@ function jump() {
     velocityY = -5;
 
     // Reset game if it's over
-    if (gameOver) {
+    /*if (gameOver) {
         resetGame();
-    }
+    }*/
 }
 
 function handleCollision() {
     lives--;
     if (lives <= 0) {
-        gameOver = true;
+        gameOver = true; showGameOverPopup();
     } else {
         bird.y = birdY; // Reset bird position
         velocityY = 0; // Reset bird velocity
     }
     collisionSound.play();
 }
-
+function showGameOverPopup() {
+    document.getElementById('final-score').textContent = score;
+    document.getElementById('game-over-popup').style.display = 'block';
+    
+    // Restart button functionality
+    document.getElementById('restart-button').addEventListener('click', function () {
+        document.getElementById('game-over-popup').style.display = 'none';
+        resetGame();
+    });
+}
 function detectCollision(a, b) {
     return a.x < b.x + b.width &&
         a.x + a.width > b.x &&
