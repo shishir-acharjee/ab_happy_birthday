@@ -132,10 +132,10 @@ body {
     box-sizing: border-box;
 }
 body{
-    background-color: #202020;
+    background-color: #f2ecec;
 }
 
-ul{
+ ul{
     height: 100vh;
     width: 100vw;
     background: linear-gradient(
@@ -150,6 +150,7 @@ ul{
     left: -100%;
     transition:left 1s;
 }
+
 li{
     display: block;
     width: 100%;
