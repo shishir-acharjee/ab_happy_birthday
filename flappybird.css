@@ -220,6 +220,36 @@ i.fas{
     background-color: rgba(0, 0, 0, 0.5); /* Black background with transparency */
     z-index: 100; 
 }
+.popup #game-over2-popup {
+    display: none; /* Hidden by default */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 80%;
+    height: 80%;
+    background-color: rgba(0, 0, 0, 0.5); /* Black background with transparency */
+    z-index: 100; 
+}
+.popup #game-over3-popup {
+    display: none; /* Hidden by default */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 80%;
+    height: 80%;
+    background-color: rgba(0, 0, 0, 0.5); /* Black background with transparency */
+    z-index: 100; 
+}
+.popup #game-over4-popup {
+    display: none; /* Hidden by default */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 80%;
+    height: 80%;
+    background-color: rgba(0, 0, 0, 0.5); /* Black background with transparency */
+    z-index: 100; 
+}
 
 .popup-content #game-over-popup {
     position: absolute;
@@ -232,8 +262,53 @@ i.fas{
     text-align: center;
    
 }
+.popup-content #game-over2-popup {
+    position: absolute;
+    top: 70%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: white;
+    padding: 20px;
+    border-radius: 5px;
+    text-align: center;
+   
+}
+.popup-content #game-over3-popup {
+    position: absolute;
+    top: 70%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: white;
+    padding: 20px;
+    border-radius: 5px;
+    text-align: center;
+   
+}
+.popup-content #game-over4-popup {
+    position: absolute;
+    top: 70%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: white;
+    padding: 20px;
+    border-radius: 5px;
+    text-align: center;
+   
+}
 
 .popup-content #game-over-popup h2 {
+    margin-top: 0;
+    z-index: 0;
+}
+.popup-content #game-over2-popup h2 {
+    margin-top: 0;
+    z-index: 0;
+}
+.popup-content #game-over3-popup h2 {
+    margin-top: 0;
+    z-index: 0;
+}
+.popup-content #game-over4-popup h2 {
     margin-top: 0;
     z-index: 0;
 }
