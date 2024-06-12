@@ -134,6 +134,9 @@ body {
 body{
     background-color: #ffffff;
 }
+nav{
+    z-index: 1000;
+}
 
  ul{
     height: 100vh;
@@ -149,12 +152,14 @@ body{
     position: absolute;
     left: -100%;
     transition:left 1s;
+ 
 }
 
 li{
     display: block;
     width: 100%;
     text-align: center;
+  
 }
 li:not(:last-child){
     margin-bottom: 40px;
@@ -171,6 +176,7 @@ ul a{
     border-radius: 40px;
     transition: 0.3s;
     padding: 3px 0;
+    
 }
 
 ul a:hover{
@@ -178,6 +184,7 @@ ul a:hover{
     color: #c44fff;
     transform: translateY(-5px);
     box-shadow: 0 15px 15px rgba(0,0,0,0.05);
+  
 }
 
 i.fas{
@@ -195,30 +202,38 @@ i.fas{
     border-radius: 50%;
     box-shadow: 0 0 25px rgba(0,0,0,0.1);
     cursor: pointer;
+    z-index: 10001;
+   
 }
+#navbar{
+    z-index: 10001;
+}
+
 /* Pop-up box */
-.popup {
+.popup #game-over-popup {
     display: none; /* Hidden by default */
     position: fixed;
     top: 0;
     left: 0;
-    width: 70%;
-    height: 50%;
+    width: 80%;
+    height: 80%;
     background-color: rgba(0, 0, 0, 0.5); /* Black background with transparency */
-    z-index: 1000; /* Ensures the pop-up is on top */
+    z-index: 100; 
 }
 
-.popup-content {
+.popup-content #game-over-popup {
     position: absolute;
-    top: 50%;
+    top: 70%;
     left: 50%;
     transform: translate(-50%, -50%);
     background-color: white;
     padding: 20px;
     border-radius: 5px;
     text-align: center;
+   
 }
 
-.popup-content h2 {
+.popup-content #game-over-popup h2 {
     margin-top: 0;
+    z-index: 0;
 }
