@@ -4,9 +4,11 @@
   box-sizing: border-box;
   font-family: "Poppins", sans-serif;
 }
+
 body {
   background-color: #fdbf00;
 }
+
 .card {
   width: 640px;
   height: 400px;
@@ -20,12 +22,15 @@ body {
   perspective: 1200px;
   transition: 1s;
 }
+
 .card:hover {
   transform: rotate(-5deg);
 }
+
 .card:hover .outside {
   transform: rotateY(-130deg);
 }
+
 .outside,
 .inside {
   height: 100%;
@@ -33,6 +38,7 @@ body {
   position: absolute;
   left: 50.1%;
 }
+
 .inside {
   background: linear-gradient(to right, #e7e7e7, #ffffff 30%);
   line-height: 3;
@@ -44,6 +50,7 @@ body {
   align-items: center;
   left: 50%;
 }
+
 .outside {
   -webkit-transform-style: preserve-3d;
   transform-style: preserve-3d;
@@ -52,6 +59,7 @@ body {
   transition: 2s;
   cursor: pointer;
 }
+
 .front,
 .back {
   height: 100%;
@@ -61,18 +69,22 @@ body {
   backface-visibility: hidden;
   transform: rotateX(0deg);
 }
+
 .front {
   background-color: #ffffff;
 }
+
 .back {
   transform: rotateY(180deg);
   background: linear-gradient(to left, #e7e7e7, #ffffff 30%);
 }
+
 .cake {
   width: 100%;
   position: absolute;
   bottom: 30px;
 }
+
 .top-layer,
 .middle-layer,
 .bottom-layer {
@@ -92,14 +104,17 @@ body {
   position: relative;
   margin: auto;
 }
+
 .middle-layer {
   transform: scale(0.85);
   top: 6px;
 }
+
 .top-layer {
   transform: scale(0.7);
   top: 26px;
 }
+
 .candle {
   height: 45px;
   width: 15px;
@@ -116,6 +131,7 @@ body {
   right: 0;
   bottom: 202px;
 }
+
 .candle:before {
   content: "";
   position: absolute;
@@ -127,6 +143,7 @@ body {
   transform: rotate(45deg);
   left: -1px;
 }
+
 .outside p {
   font-size: 23px;
   text-transform: uppercase;
@@ -135,7 +152,53 @@ body {
   letter-spacing: 6px;
   color: #000046;
 }
+
 .inside h1 {
   font-size: 120px;
   line-height: 120px;
 }
+
+/* Responsive styles */
+@media (max-width: 768px) {
+  .card {
+    width: 480px;
+    height: 400px;
+  }
+
+  .inside h1 {
+    font-size: 80px;
+    line-height: 80px;
+  }
+
+  .outside p {
+    font-size: 18px;
+  }
+
+  .top-layer,
+  .middle-layer,
+  .bottom-layer {
+    width: 180px;
+    height: 60px;
+  }
+
+  .middle-layer {
+    top: 4px;
+  }
+
+  .top-layer {
+    top: 18px;
+  }
+
+  .candle {
+    height: 20px;
+    width: 10px;
+    bottom: 152px;
+  }
+
+  .candle:before {
+    height: 12px;
+    width: 12px;
+    bottom: 32px;
+  }
+}
+
