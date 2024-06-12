@@ -1,0 +1,16 @@
+body {
+  min-height: 100vh;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #653a95;
+}
+svg {
+  width: 90vw;
+  min-width: 300px;
+  max-height: 90vh;
+}
+#button-trigger {
+  cursor: pointer;
+}
