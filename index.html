@@ -5,6 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Jumping Ahona</title>
     <link rel="stylesheet" href="flappybird.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.1/css/all.min.css">
+
     <script defer src="flappybird.js"></script>
     <style>
         #music-options {
@@ -432,7 +436,38 @@
     </style>
 </head>
 <body>
-   
+    <nav>
+        <ul id="navbar">
+            <li>
+                <a href="index.html">
+                    home
+                </a>
+            </li>
+            <li>
+                <a href="#features">
+                    features
+                </a>
+            </li>
+            <li>
+                <a href="#pricing">
+                    pricing
+                </a>
+            </li>
+            <li>
+                <a href="#download">
+                    download
+                </a>
+            </li>
+            <li>
+                <a href="#contact">
+                    contact
+                </a>
+            </li>
+        </ul>
+        
+        <i class="fas fa-bars" id="icon" onclick="navigation()"></i>
+    </nav>
+
     <div id="start-screen">
         <div aria-label="Orange and tan hamster running in a metal wheel" role="img" class="wheel-and-hamster">
             <div class="wheel"></div>
@@ -606,5 +641,22 @@ document.getElementById("next-poem-button").addEventListener("click", function()
 });
 
     </script>
+    
+    <script type="text/javascript">
+      function navigation(){
+          var icon=document.getElementById("icon");
+          var navbar=document.getElementById("navbar");
+          if(icon.classList.contains('fa-bars')){
+              icon.classList.remove('fa-bars');
+              icon.classList.add('fa-times');
+              navbar.style.left = '0';
+          }
+          else{
+              icon.classList.remove('fa-times');
+              icon.classList.add('fa-bars');
+              navbar.style.left = '-100%';
+          }
+      }
+  </script>
 </body>
 </html>
