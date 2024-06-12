@@ -114,31 +114,18 @@ body {
   }
 
   .intro p {
-    font-size: 45px;
+    font-size: 50px;
   }
 }
 
-@media (max-width: 992px) {
+
+@media (max-width: 768px) {
   body {
-    font-size: 26px;
+    font-size: 30px;
   }
 
   .intro h1 {
     font-size: 32px;
-  }
-
-  .intro p {
-    font-size: 44px;
-  }
-}
-
-@media (max-width: 768px) {
-  body {
-    font-size: 22px;
-  }
-
-  .intro h1 {
-    font-size: 28px;
   }
 
   .intro p {
