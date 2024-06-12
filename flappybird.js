@@ -24,6 +24,9 @@ function updateBackgroundImage() {
 function resetGame() {
      // Hide game over popup if visible
      document.getElementById('game-over-popup').style.display = 'none';
+     document.getElementById('game-over-popup2').style.display = 'none';
+     document.getElementById('game-over-popup3').style.display = 'none';
+     document.getElementById('game-over-popup4').style.display = 'none';
     // Increment the restart count
     restartCount++;
     localStorage.setItem('restartCount', restartCount);
@@ -459,7 +462,13 @@ function jump() {
 function handleCollision() {
     lives--;
     if (lives <= 0) {
-        gameOver = true; showGameOverPopup();
+        gameOver = true; 
+        if(score<30){
+            showGameOverPopup();
+        }
+        else if(score<50){
+            showGameOverPopup2();
+        }
     } else {
         bird.y = birdY; // Reset bird position
         velocityY = 0; // Reset bird velocity
@@ -469,6 +478,36 @@ function handleCollision() {
 function showGameOverPopup() {
     document.getElementById('final-score').textContent = score;
     document.getElementById('game-over-popup').style.display = 'block';
+    
+    // Restart button functionality
+    document.getElementById('restart-button').addEventListener('click', function () {
+        document.getElementById('game-over-popup').style.display = 'none';
+        resetGame();
+    });
+}
+function showGameOverPopup2() {
+    document.getElementById('final-score').textContent = score;
+    document.getElementById('game-over-popup2').style.display = 'block';
+    
+    // Restart button functionality
+    document.getElementById('restart-button').addEventListener('click', function () {
+        document.getElementById('game-over-popup').style.display = 'none';
+        resetGame();
+    });
+}
+function showGameOverPopup3() {
+    document.getElementById('final-score').textContent = score;
+    document.getElementById('game-over-popup3').style.display = 'block';
+    
+    // Restart button functionality
+    document.getElementById('restart-button').addEventListener('click', function () {
+        document.getElementById('game-over-popup').style.display = 'none';
+        resetGame();
+    });
+}
+function showGameOverPopup4() {
+    document.getElementById('final-score').textContent = score;
+    document.getElementById('game-over-popup4').style.display = 'block';
     
     // Restart button functionality
     document.getElementById('restart-button').addEventListener('click', function () {
