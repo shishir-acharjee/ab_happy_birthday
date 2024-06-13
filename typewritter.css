@@ -711,3 +711,21 @@ body {
   75% {top:100px;}
   100% {top:400px;}
 }
+@media (max-width: 1200px ) {
+  body{
+    transform: scale(1.4); /* Adjust the scale factor as needed */
+    transform-origin: top; /* Ensures scaling happens from the center */
+  
+  }
+  
+
+}
+@media (max-height: 1200px ) {
+  body{
+    transform: scale(1.4); /* Adjust the scale factor as needed */
+    transform-origin: top; /* Ensures scaling happens from the center */
+  
+  }
+  
+
+}
