@@ -712,6 +712,17 @@ body {
   100% {top:400px;}
 }
 
+@media (max-width: 990px) {
+  #typewriter{
+  margin-right: 150px;
+  }
+  body{
+    transform: scale(1.2); /* Adjust the scale factor as needed */
+    transform-origin: top; /* Ensures scaling happens from the center */
+
+  }
+
+  }
 
   
 
