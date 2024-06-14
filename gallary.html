@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <title>Gallary</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ==" crossorigin="anonymous" referrerpolicy="no-referrer" /><link rel="stylesheet" href="./gallary.css">
+   <style>
+    .intro{
+       position: fixed;
+       margin-top: 100px;
+       margin-bottom: 500px;
+    }
+    .caption {
+      position: absolute;
+      top: 0px;
+      left: 10px;
+      background-color: rgba(0, 0, 0, 0.5);
+      color: white;
+      padding: 5px 10px;
+      border-radius: 5px;
+      z-index: 22;
+    }
+   </style>
+</head>
+<body>
+  
+<!-- partial:index.partial.html -->
+<div class="intro">
+  <h1>বাগানের ফুলসমূহ</h1>
+</div>
+<div class="slider-container">
+  <div class="image-container">
+    <div class="slider">
+      <img src="flr1.png" alt="image">
+      <div class="caption">রজনীগন্ধা</div>
+    </div>
+    <div class="slider">
+      <img src="flr2.png" alt="image">
+  
+    </div>
+    <div class="slider">
+      <img src="flr3.png" alt="image">
+     
+    </div>
+    <div class="slider">
+      <img src="flr4.png" alt="image">
+    </div>
+    <div class="slider">
+      <img src="flr5.png" alt="image">
+    </div>
+    <div class="slider">
+      <img src="flr6.png" alt="image">
+    </div>
+    <div class="slider">
+      <img src="flr7.png" alt="image">
+    </div>
+    <div class="slider">
+      <img src="flr8.png" alt="image">
+    </div>
+  </div>
+  <i class="fas fa-angle-double-left btn prev"></i>
+  <i class="fas fa-angle-double-right btn next"></i>
+</div>
+<!-- partial -->
+  <script  src="./gallary.js"></script>
+
+</body>
+</html>
