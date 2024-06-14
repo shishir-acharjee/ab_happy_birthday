@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Gallary</title>
+    <!--Stylesheet-->
+    <style>
+        h1{
+            position: absolute;
+            margin-left: 30%;
+            margin-top: 2%;
+            color: white;
+        }
+    </style>
+    <link rel="stylesheet" href="gallary.css">
+</head>
+<body>
+    <h1>বাগানের ফুলসমূহ</h1>
+    <div class="container">
+        <div class="image-container">
+            <img src="flr1.png" id="content1" class="active">
+            <img src="flr2.png" id="content2">
+            <img src="flr3.png" id="content3">
+            <img src="flr4.png" id="content4">
+            <img src="flr5.png" id="content5">
+            <img src="flr6.png" id="content6">
+            <img src="flr7.png" id="content7">
+            <img src="flr8.png" id="content8">
+        </div>
+        <div class="dot-container">
+            <button onclick = "dot(1)"></button>
+            <button onclick = "dot(2)"></button>
+            <button onclick = "dot(3)"></button>
+            <button onclick = "dot(4)"></button>
+            <button onclick = "dot(5)"></button>
+            <button onclick = "dot(6)"></button>
+            <button onclick = "dot(7)"></button>
+            <button onclick = "dot(8)"></button>
+        </div>
+        <button id="prev" onclick="prev()"> &lt; </button>
+        <button id="next" onclick="next()"> &gt; </button>
+    </div>
+    <script src="gallary.js"></script>
+</body>
+</html>
