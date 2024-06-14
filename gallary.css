@@ -45,7 +45,7 @@ body {
 @media (max-width: 1200px) {
    
     body{
-      transform: scale(1.5); /* Adjust the scale factor as needed */
+      transform: scale(1.7); /* Adjust the scale factor as needed */
       transform-origin: center; /* Ensures scaling happens from the center */
   
     }
