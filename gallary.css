@@ -42,3 +42,12 @@ body {
 .btn:hover {
     opacity: 1;
 }
+@media (max-width: 1200px) {
+   
+    body{
+      transform: scale(1.5); /* Adjust the scale factor as needed */
+      transform-origin: center; /* Ensures scaling happens from the center */
+  
+    }
+  
+    }
