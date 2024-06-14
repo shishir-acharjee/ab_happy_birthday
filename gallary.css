@@ -78,3 +78,8 @@ button{
 #next{
     right: 15px;
 }
+@media only screen and (max-width: 900px) {
+    body {
+      height: 600px;
+    }
+  }
