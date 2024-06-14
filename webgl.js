@@ -9,12 +9,13 @@ const pointer = {
     clicked: true,
 };
 
-// For codepen preview
+// for codepen preview
 window.setTimeout(() => {
     pointer.x = .75;
     pointer.y = .5;
     pointer.clicked = true;
 }, 700);
+
 
 let basicMaterial, shaderMaterial;
 let renderer = new THREE.WebGLRenderer({
@@ -45,15 +46,14 @@ render();
 let isTouchScreen = false;
 
 window.addEventListener("click", e => {
-    if (!isTouchScreen) {
+	if (!isTouchScreen) {
         pointer.x = e.pageX / window.innerWidth;
         pointer.y = e.pageY / window.innerHeight;
-        pointer.clicked = true;        
-    }
+        pointer.clicked = true;		
+	}
 });
-
 window.addEventListener("touchstart", e => {
-    isTouchScreen = true;
+	isTouchScreen = true;
     pointer.x = e.targetTouches[0].pageX / window.innerWidth;
     pointer.y = e.targetTouches[0].pageY / window.innerHeight;
     pointer.clicked = true;
