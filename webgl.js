@@ -47,16 +47,16 @@ let isTouchScreen = false;
 
 window.addEventListener("click", e => {
 	if (!isTouchScreen) {
-        pointer.x = e.pageX / window.innerWidth;
-        pointer.y = e.pageY / window.innerHeight;
-        pointer.clicked = true;		
+    pointer.x = e.pageX / window.innerWidth;
+    pointer.y = e.pageY / window.innerHeight;
+    pointer.clicked = true;		
 	}
 });
 window.addEventListener("touchstart", e => {
 	isTouchScreen = true;
-    pointer.x = e.targetTouches[0].pageX / window.innerWidth;
-    pointer.y = e.targetTouches[0].pageY / window.innerHeight;
-    pointer.clicked = true;
+   pointer.x = e.targetTouches[0].pageX / window.innerWidth;
+	pointer.y = e.targetTouches[0].pageY / window.innerHeight;
+	pointer.clicked = true;
 });
 
 cleanBtn.addEventListener("click", cleanCanvas);
@@ -90,6 +90,7 @@ function createPlane() {
 }
 
 function render() {
+
     shaderMaterial.uniforms.u_clean.value = pointer.vanishCanvas ? 0 : 1;
     shaderMaterial.uniforms.u_texture.value = renderTargets[0].texture;
 
@@ -100,6 +101,7 @@ function render() {
         pointer.clicked = false;
     }
     shaderMaterial.uniforms.u_stop_time.value += clock.getDelta();
+
 
     renderer.setRenderTarget(renderTargets[1]);
     renderer.render(sceneShader, camera);
