@@ -82,7 +82,7 @@ figcaption::before {
 em {
   font-size: 0.75em;
 }
-@media (max-width: 700px) {
+@media (max-width: 1100px) {
   body {
     grid-template-columns: 1fr;
   }
