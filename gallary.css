@@ -87,7 +87,6 @@ em {
     grid-template-columns: 1fr;
   }
    figure {
-    height: 100vh;
-    overflow: hidden;
+    width:90%;
   }
 }
