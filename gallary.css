@@ -1,0 +1,84 @@
+* {
+  margin: 0;
+}
+
+/* most basic reset */
+/* some basic layout and prettifying styles */
+html, body {
+  display: grid;
+}
+
+html {
+  min-height: 100%;
+}
+
+body {
+  grid-gap: 0.5em;
+  grid-template-columns: repeat(auto-fit, Min(100%, 22.5em));
+  place-content: center;
+  /* put grid in the middle */
+  padding: 0.5em;
+  /* space around grid */
+  background: url(https://images.unsplash.com/photo-1518882496191-511e15d01a58?w=1400) 0 0/cover fixed;
+  font: 900 clamp(.625em, 4vw, 1.25em) comic neue, comic sans ms, cursive;
+}
+
+figure {
+  place-self: center;
+  /* put in middle of its grid area */
+  position: relative;
+  /* to attach white bg to it */
+  border: solid 1em transparent;
+  /* space around white edges */
+  padding: 0.75em;
+  /* white edge thickness */
+  -webkit-clip-path: polygon(0 2.5em, 2.5em 0, 100% 0, 100% calc(100% - 2.5em), calc(100% - 2.5em) 100%, 0 100%);
+          clip-path: polygon(0 2.5em, 2.5em 0, 100% 0, 100% calc(100% - 2.5em), calc(100% - 2.5em) 100%, 0 100%);
+  /* tucked corner arched shadows */
+  /* change switch variable value */
+}
+figure::before, figure::after {
+  /* switch variable */
+  /* see https://css-tricks.com/dry-switching-with-css-variables-the-difference-of-one-declaration/ */
+  --i: 0;
+  --s: calc(2*var(--i) - 1);
+  /* sign: -1 if i is 0, 1 if i is 1 */
+  position: absolute;
+  /* position depends on switch variable value */
+  /* $o if i is 0, 100% - $o if i is 1 */
+  top: calc(var(--i)*100% - var(--s)*0.25em);
+  left: calc(var(--i)*100% - var(--s)*0.25em);
+  width: 3.5355339059em;
+  /* shadow length */
+  height: 0.5em;
+  transform-origin: 50% 0;
+  /* middle top */
+  transform: translate(-50%) rotate(calc(var(--i)*.5turn - 45deg)) translatey(-1px);
+  background: radial-gradient(farthest-side at 50% 0, #0008, #0004 30%, transparent);
+  content: "";
+}
+figure::after {
+  --i: 1 ;
+}
+
+/* responsivity */
+img {
+  width: 100%;
+}
+
+figcaption::before {
+  /* the white background */
+  /* its parent still has the default static positioning */
+  position: absolute;
+  inset: 0;
+  /* w.r.t. figure padding-box */
+  z-index: -1;
+  /* place behind */
+  box-shadow: 3px 3px 13px #0007;
+  background: #fff;
+  content: "";
+}
+
+em {
+  font-size: 0.75em;
+}
