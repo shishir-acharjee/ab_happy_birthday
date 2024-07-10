@@ -42,7 +42,7 @@ function resetGame() {
     cake = null;
     flower = null; // Reset flower
     gameOver = false;
-    lives = 4; // Reset lives
+    lives = 10; // Reset lives
     isInvincible = false; // Reset invincibility
     invincibilityEndTime = 0; // Reset invincibility end time
 
